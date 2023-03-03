@@ -1,0 +1,41 @@
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    networks:
+      - express
+    volumes:
+      - secure-web-dev-db:/data/db
+  api:
+    container_name: api
+    depends_on: 
+      - mongodb
+    build: ./backend
+    restart: unless-stopped
+    networks:
+      - express
+    ports:
+      - 3000
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/
+      - JWT_SECRET=secret
+      - API_PORT=3000
+  front:
+    container_name: app
+    build: ./frontend
+    environment:
+      - VITE_API_URL=http://api:3000
+    restart: unless-stopped
+    networks:
+      - express
+    ports:
+      - 8080:4173
+    depends_on:
+      - api
+
+networks:
+  express:
+    driver: bridge
+
+volumes:
+  secure-web-dev-db:
