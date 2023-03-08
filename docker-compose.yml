@@ -8,9 +8,10 @@ services:  # Declaring services section
       - secure-web-dev-db:/data/db  # Using the secure-web-dev-db volume for the mongodb container
   api:  # Declaring a service named api
     container_name: api  # Assigning a name to the api container
+    build: ./backend
     depends_on:  # Declaring dependencies between services
       - mongodb  # api depends on mongodb
-    image: arthurvrt/secure-web-dev-backend:latest
+    # image: arthurvrt/secure-web-dev-backend:latest
     restart: unless-stopped  # Setting the container's restart policy to unless-stopped
     networks:  # Defining the network the container will be in
       - express  # Using the express network
@@ -22,8 +23,11 @@ services:  # Declaring services section
       - API_PORT=3000  # Setting the port used by the api service
   front:  # Declaring a service named front
     container_name: app  # Assigning a name to the front container
-    image: arthurvrt/secure-web-dev-frontend:latest
+    build: ./frontend
+    # image: arthurvrt/secure-web-dev-frontend:latest
     restart: unless-stopped  # Setting the container's restart policy to unless-stopped
+    volumes:
+      - ./frontend/static/static_content.txt:/usr/src/app/static/static_content.txt
     networks:  # Defining the network the container will be in
       - express  # Using the express network
     ports:  # Exposing the container's port to the host system

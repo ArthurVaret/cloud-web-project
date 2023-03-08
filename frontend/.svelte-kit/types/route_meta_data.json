@@ -1,0 +1,42 @@
+{
+	"/": [
+		"src/routes/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/locations": [
+		"src/routes/locations/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/locations/add": [
+		"src/routes/locations/add/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/locations/[id]": [
+		"src/routes/locations/[id]/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/locations/[id]/delete": [
+		"src/routes/locations/[id]/delete/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/locations/[id]/edit": [
+		"src/routes/locations/[id]/edit/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/login": [
+		"src/routes/login/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/profile": [
+		"src/routes/profile/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/register": [
+		"src/routes/register/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/text": [
+		"src/routes/text/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	]
+}
