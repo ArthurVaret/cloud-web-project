@@ -13,7 +13,7 @@ Explanation of volumes, depends_on, restart and environment :
 - `volumes`: This section defines a Docker volume named `secure-web-dev-db`. Volumes are used to persist data across container restarts or removals. In this case, the volume is mounted to the `mongodb` container so that data stored in the `/data/db` directory is stored on the host machine.
 - `depends_on`: This section lists the services that the current service depends on. In this case, the `api` service depends on the `mongodb` service and the `front` service depends on the `api` service. This ensures that the services are started in the correct order.
 - `restart`: This section specifies the restart policy for the container. In this case, the `api` and `front` services are set to `unless-stopped`, which means that the container will always be restarted unless it was explicitly stopped by a user.
-- `environment`: This section sets environment variables for the container. In this case, the `api` service sets the `MONGO_URI`, `JWT_SECRET`, and `API_PORT` environment variables. These variables are used in the backend code to connect to the MongoDB container, set the secret key for JWT authentication, and specify the port on which the API will run. Similarly, the `front` service sets the `VITE_API_URL` environment variable, which is used in the frontend code to connect to the API server.
+- `environment`: This section sets environment variables for the container. In this case, the `api` service sets the `MONGO_URI`, `JWT_SECRET`, and `API_PORT` environment variables. These variables are used in the backend code to connect to the MongoDB container, set the secret key for JWT authentication, and specify the port on which the API will run.
 
 
 ```Docker
