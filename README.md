@@ -1,7 +1,7 @@
 # How to install this project
 1. Install Docker and Docker-compose on your machine if you haven't already.
 
-2. Clone this repo in your directory
+2. Clone this repo in your directory 
 ```git
 git clone git@github.com:ArthurVaret/cloud-web-project.git
 ```
@@ -40,9 +40,9 @@ services:
       - secure-web-dev-db:/data/db
   api:
     container_name: api
-    depends_on: 
+    depends_on:
       - mongodb
-    build: ./backend
+    image: arthurvrt/secure-web-dev-backend:latest
     restart: unless-stopped
     networks:
       - express
@@ -54,7 +54,7 @@ services:
       - API_PORT=3000
   front:
     container_name: app
-    build: ./frontend
+    image: arthurvrt/secure-web-dev-frontend:latest
     restart: unless-stopped
     networks:
       - express
