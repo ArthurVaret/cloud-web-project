@@ -1,7 +1,7 @@
 # How to install this project
 1. Install Docker and Docker-compose on your machine if you haven't already.
 
-2. Clone this repo in your directory
+2. Clone this repo in your directory || Or copy only the docker-compose.yml
 ```git
 git clone git@github.com:ArthurVaret/cloud-web-project.git
 ```
