@@ -1,3 +1,17 @@
+# How to install this project
+1. Install Docker and Docker-compose on your machine if you haven't already.
+
+2. Clone this repo in your directory
+```git
+git clone git@github.com:ArthurVaret/cloud-web-project.git
+```
+
+3. Start the containers
+```Docker
+docker-compose up
+```
+
+
 # Cloud WebApp Project
 
 This code defines a Docker Compose file that sets up three services: `mongodb`, `api`, and `front`. The `mongodb` service uses the official `mongo` image and creates a named container that is connected to the `express` network. It also mounts a Docker volume to store data for the MongoDB container.
@@ -15,8 +29,7 @@ Explanation of volumes, depends_on, restart and environment :
 - `restart`: This section specifies the restart policy for the container. In this case, the `api` and `front` services are set to `unless-stopped`, which means that the container will always be restarted unless it was explicitly stopped by a user.
 - `environment`: This section sets environment variables for the container. In this case, the `api` service sets the `MONGO_URI`, `JWT_SECRET`, and `API_PORT` environment variables. These variables are used in the backend code to connect to the MongoDB container, set the secret key for JWT authentication, and specify the port on which the API will run.
 
-
-```Docker
+```YAML
 services:
   mongodb:
     container_name: mongodb
