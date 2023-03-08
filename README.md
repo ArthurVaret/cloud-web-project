@@ -42,8 +42,6 @@ services:
   front:
     container_name: app
     build: ./frontend
-    environment:
-      - VITE_API_URL=http://api:3000
     restart: unless-stopped
     networks:
       - express
