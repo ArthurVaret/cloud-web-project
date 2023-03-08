@@ -1,41 +1,39 @@
-services:
-  mongodb:
-    container_name: mongodb
-    image: mongo:latest
-    networks:
-      - express
-    volumes:
-      - secure-web-dev-db:/data/db
-  api:
-    container_name: api
-    depends_on: 
-      - mongodb
-    build: ./backend
-    restart: unless-stopped
-    networks:
-      - express
-    ports:
-      - 3000
-    environment:
-      - MONGO_URI=mongodb://mongodb:27017/
-      - JWT_SECRET=secret
-      - API_PORT=3000
-  front:
-    container_name: app
-    build: ./frontend
-    environment:
-      - VITE_API_URL=http://api:3000
-    restart: unless-stopped
-    networks:
-      - express
-    ports:
-      - 8080:4173
-    depends_on:
-      - api
+services:  # Declaring services section
+  mongodb:  # Declaring a service named mongodb
+    container_name: mongodb  # Assigning a name to the mongodb container
+    image: mongo:latest  # Using the latest mongo image from Docker Hub
+    networks:  # Defining the network the container will be in
+      - express  # Using the express network
+    volumes:  # Mounting a volume to store the data on the host system
+      - secure-web-dev-db:/data/db  # Using the secure-web-dev-db volume for the mongodb container
+  api:  # Declaring a service named api
+    container_name: api  # Assigning a name to the api container
+    depends_on:  # Declaring dependencies between services
+      - mongodb  # api depends on mongodb
+    build: ./backend  # Specifying the location of the Dockerfile for building the api service
+    restart: unless-stopped  # Setting the container's restart policy to unless-stopped
+    networks:  # Defining the network the container will be in
+      - express  # Using the express network
+    ports:  # Exposing the container's port to the host system
+      - 3000  # Exposing port 3000
+    environment:  # Setting environment variables for the container
+      - MONGO_URI=mongodb://mongodb:27017/  # Setting the mongodb URI for the api to connect to mongodb container
+      - JWT_SECRET=secret  # Setting the secret for JWT authentication
+      - API_PORT=3000  # Setting the port used by the api service
+  front:  # Declaring a service named front
+    container_name: app  # Assigning a name to the front container
+    build: ./frontend  # Specifying the location of the Dockerfile for building the front service
+    restart: unless-stopped  # Setting the container's restart policy to unless-stopped
+    networks:  # Defining the network the container will be in
+      - express  # Using the express network
+    ports:  # Exposing the container's port to the host system
+      - 8080:4173  # Exposing port 4173 to port 8080 on the host system
+    depends_on:  # Declaring dependencies between services
+      - api  # front depends on api
 
-networks:
-  express:
-    driver: bridge
+networks:  # Declaring networks section
+  express:  # Declaring a network named express
+    driver: bridge  # Using the bridge network driver
 
-volumes:
-  secure-web-dev-db:
+volumes:  # Declaring volumes section
+  secure-web-dev-db:  # Declaring a volume named secure-web-dev-db
