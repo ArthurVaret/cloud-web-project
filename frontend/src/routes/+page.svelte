@@ -15,14 +15,8 @@
 		</h3>
 	</div>
 	<div>
-		<a href="https://github.com/strawhattom/secure-web-dev-frontend"
-			><h3>Front source code</h3></a
+		<a href="https://github.com/ArthurVaret/cloud-web-project"
+			><h3>Link to GitHub</h3></a
 		>
-		<a href="https://github.com/strawhattom/secure-web-dev-backend"
-			><h3>Back source code</h3></a
-		>
-		<a href="https://github.com/strawhattom/docker-secure-web-dev/">
-			<h3>Docker compose for your version</h3>
-		</a>
 	</div>
 </div>
