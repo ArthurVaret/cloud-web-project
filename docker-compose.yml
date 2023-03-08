@@ -10,7 +10,7 @@ services:  # Declaring services section
     container_name: api  # Assigning a name to the api container
     depends_on:  # Declaring dependencies between services
       - mongodb  # api depends on mongodb
-    image: arthurvrt/secure-web-dev-backend:latest
+    image: arthurvrt/secure-web-dev-backend:latest #get image from DockerHub
     restart: unless-stopped  # Setting the container's restart policy to unless-stopped
     networks:  # Defining the network the container will be in
       - express  # Using the express network
@@ -22,7 +22,7 @@ services:  # Declaring services section
       - API_PORT=3000  # Setting the port used by the api service
   front:  # Declaring a service named front
     container_name: app  # Assigning a name to the front container
-    image: arthurvrt/secure-web-dev-frontend:latest
+    image: arthurvrt/secure-web-dev-frontend:latest #get image from DockerHub
     restart: unless-stopped  # Setting the container's restart policy to unless-stopped
     networks:  # Defining the network the container will be in
       - express  # Using the express network
