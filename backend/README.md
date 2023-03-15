@@ -1,4 +1,4 @@
-# Secure Web Development - Backend
+# Backend
 
 This repo contains an Express app, it will be the backend used for the semester.
 
