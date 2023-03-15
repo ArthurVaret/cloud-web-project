@@ -1,3 +1,4 @@
+version: '3'
 services:  # Declaring services section
   mongodb:  # Declaring a service named mongodb
     container_name: mongodb  # Assigning a name to the mongodb container
@@ -11,12 +12,9 @@ services:  # Declaring services section
     build: ./backend
     depends_on:  # Declaring dependencies between services
       - mongodb  # api depends on mongodb
-    # image: arthurvrt/secure-web-dev-backend:latest
     restart: unless-stopped  # Setting the container's restart policy to unless-stopped
     networks:  # Defining the network the container will be in
       - express  # Using the express network
-    ports:  # Exposing the container's port to the host system
-      - 3000  # Exposing port 3000
     environment:  # Setting environment variables for the container
       - MONGO_URI=mongodb://mongodb:27017/  # Setting the mongodb URI for the api to connect to mongodb container
       - JWT_SECRET=secret  # Setting the secret for JWT authentication
@@ -24,14 +22,13 @@ services:  # Declaring services section
   front:  # Declaring a service named front
     container_name: app  # Assigning a name to the front container
     build: ./frontend
-    # image: arthurvrt/secure-web-dev-frontend:latest
     restart: unless-stopped  # Setting the container's restart policy to unless-stopped
-    volumes:
+    volumes: # bind mount a text file to the container
       - ./frontend/static/static_content.txt:/usr/src/app/static/static_content.txt
     networks:  # Defining the network the container will be in
       - express  # Using the express network
     ports:  # Exposing the container's port to the host system
-      - 8080:4173  # Exposing port 4173 to port 8080 on the host system
+      - 80:4173  # Exposing port 4173 to port 80 on the host system
     depends_on:  # Declaring dependencies between services
       - api  # front depends on api
 
