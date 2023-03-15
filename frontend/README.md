@@ -1,4 +1,4 @@
-# Secure-Web-Dev Front
+# Front
 
 School workshop to implement a front end to use a given back-end made by our teacher, ![source](https://github.com/strawhattom/secure-web-dev-backend)
 
