@@ -42,9 +42,9 @@ app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 async function main() {
   await mongoose.connect(process.env.MONGO_URI);
   console.log("Connected to Mongo Database");
-  const dbInit = await findAll()
-  console.log(dbInit)
+  const dbInit = await findAll();
   if(dbInit.length === 0) {
+    console.log("Importing data")
     await importData()
   }
   app.listen(port, () => {
